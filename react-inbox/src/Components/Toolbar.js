@@ -37,14 +37,20 @@ class Toolbar extends Component {
             Mark As Unread
           </button>
 
-          <select className="form-control label-select" disabled="disabled">
+          <select
+            className="form-control label-select"
+            disabled={`${ this.props.disabledAddLabelDropDown() }`}
+          >
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <select className="form-control label-select" disabled="disabled">
+          <select
+            className="form-control label-select"
+            disabled={`${ this.props.disabledRemoveLabelDropDown() }`}
+          >
             <option>Remove label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
@@ -53,7 +59,7 @@ class Toolbar extends Component {
 
           <button
             className="btn btn-default"
-            disabled={`${ this.props.disableDeleteMessageBtn() }`}
+            disabled={`${ this.props.disabledDeleteMessageBtn() }`}
           >
             <i className="fa fa-trash-o"></i>
           </button>

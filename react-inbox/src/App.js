@@ -163,7 +163,7 @@ class App extends Component {
   disabledReadBtn = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
     let readStatusArr = selectedMessages.map((message) => {
-      return message.read ? true : false
+      return message.selected ? true : false
     })
 
     return readStatusArr.includes(true) || readStatusArr.length === 0 ? 'disable' : ''
@@ -172,15 +172,16 @@ class App extends Component {
   // Toolbar story: mark as Unread disable BTN
   disabledUnreadBtn = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    let readStatusArr = selectedMessages.map((message) => {
-      return message.read ? true : false
-    })
-
-    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+    return selectedMessages === 0 ? 'disable' : ''
   }
 
-  // Toolbar story: Deleting Messages
-  disableDeleteMessageBtn = () => {
+  // Toolbar : disabled Delete Btn and Add/Remove Label Dropdown
+  disabledDeleteMessageBtn = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    return selectedMessages === 0 ? 'disable' : ''
+  }
+
+  disabledAddLabelDropDown = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
     let readStatusArr = selectedMessages.map((message) => {
       return message.selected ? true : false
@@ -189,6 +190,16 @@ class App extends Component {
     return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
   }
 
+  disabledRemoveLabelDropDown = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    let readStatusArr = selectedMessages.map((message) => {
+      return message.selected ? true : false
+    })
+
+    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+  }
+
+  // Toolbar story: Deleting Messages
   deleteMessage = () => {
     this.setState({
       messages: this.state.messages.filter((message) => {
@@ -208,7 +219,9 @@ class App extends Component {
           markAsUnread={this.markAsUnread}
           disabledReadBtn={this.disabledReadBtn}
           disabledUnreadBtn={this.disabledUnreadBtn}
-          disableDeleteMessageBtn={this.disableDeleteMessageBtn}
+          disabledDeleteMessageBtn={this.disabledDeleteMessageBtn}
+          disabledAddLabelDropDown={this.disabledAddLabelDropDown}
+          disabledRemoveLabelDropDown={this.disabledRemoveLabelDropDown}
         />
         <MessageList
           messages={ this.state.messages }
