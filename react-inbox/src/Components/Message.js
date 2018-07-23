@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-const Message = (props) => {
+const Message = ({message}) => {
   return (
-    <div className={`row message ${props.message.read ? 'read' : 'unread'}`}>
+    <div className={`row message ${message.read ? 'read' : 'unread'}`}>
       <div className="col-xs-1">
         <div className="row">
           <div className="col-xs-2">
