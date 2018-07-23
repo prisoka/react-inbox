@@ -68,7 +68,7 @@ class App extends Component {
     ]
   }
 
-  /* story: Starring >>>
+  /* Message story: Starring >>>
   - When a user clicks the star next to a message
   - Then it should toggle whether the message is starred or not */
 
@@ -79,7 +79,7 @@ class App extends Component {
     this.setState(this.state.messages.concat(message))
   }
 
-  /* story: Selecting Individual Messages >>>
+  /* Message story: Selecting Individual Messages >>>
   - When a user checks the checkbox on a message / Then the message should be highlighted
   - When a user unchecks the checkbox on a message / Then the message should _not_ be highlighted */
   userSelectedMessage = (message) => {
@@ -88,7 +88,7 @@ class App extends Component {
     this.setState(this.state.messages.concat(message))
   }
 
-  /* story: Marking Messages as Read
+  /* Message story: Marking Messages as Read
   - When a user selects messages And presses "Mark As Read"
   - Then each selected message should be marked as "read" And should no longer be bold */
   userReadMessage = (message) => {
@@ -97,10 +97,33 @@ class App extends Component {
     this.setState(this.state.messages.concat(message))
   }
 
+  /* Toolbar story: Marking Messages as Unread
+  - When a user selects messages And presses "Mark As Unread"
+  - Then each selected message should be marked as unread And should should appear bold */
+  selectedIndicator = () => {
+    let numMessageSelected = this.state.messages.filter((message) => {
+      return message.selected
+    }).length
+
+    let action = ''
+
+    if (numMessageSelected === this.state.messages.length){
+      action = '-check'
+    } else if (numMessageSelected === 0) {
+      action = ''
+    } else {
+      action = '-minus'
+    }
+
+    return action
+  }
+
   render() {
     return (
       <div className="App">
-        <Toolbar />
+        <Toolbar
+          selectedIndicator={this.selectedIndicator}
+        />
         <MessageList
           messages={ this.state.messages }
           userStarredMessage={this.userStarredMessage}
