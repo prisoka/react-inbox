@@ -69,15 +69,17 @@ class App extends Component {
     // ]
   }
 
+  // React API
   componentDidMount = async () => {
     await this.getDataFromAPI()
   }
 
+  // loading messages from the server
   getDataFromAPI = async () => {
   // fetch messagesJson
   const messagesJson = await fetch('http://localhost:8082/api/messages')
   let messages = await messagesJson.json()
-  console.log('messages', messages)
+  // console.log('messages', messages)
 
   this.setState({messages})
 }

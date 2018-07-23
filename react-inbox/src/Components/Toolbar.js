@@ -13,6 +13,10 @@ class Toolbar extends Component {
             Unread messages
           </p>
 
+          <a className="btn btn-danger">
+            <i className="fa fa-plus"></i>
+          </a>
+
           <button className="btn btn-default">
             <i
               className={`fa fa${ this.props.selectedIndicator() }-square-o`}
