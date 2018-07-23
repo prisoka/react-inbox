@@ -118,6 +118,7 @@ class App extends Component {
     return action
   }
 
+  // Toolbar story: Bulk Select / Deselect
   selectAllMessagesBtn = () => {
     let numMessageSelected = this.state.messages.filter((message) => {
       return message.selected
@@ -140,12 +141,32 @@ class App extends Component {
     }
   }
 
+  // Toolbar Story: Mark as Read
+  markAsRead = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    this.setState(this.state.messages.concat(selectedMessages.map(message => {
+      message.read = true
+      return message
+    })))
+  }
+
+  // Toolbar Story: Mark as Unread
+  markAsUnread = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    this.setState(this.state.messages.concat(selectedMessages.map(message => {
+      message.read = false
+      return message
+    })))
+  }
+
   render() {
     return (
       <div className="App">
         <Toolbar
           selectedIndicator={this.selectedIndicator}
           selectAllMessagesBtn={this.selectAllMessagesBtn}
+          markAsRead={this.markAsRead}
+          markAsUnread={this.markAsUnread}
         />
         <MessageList
           messages={ this.state.messages }

@@ -17,11 +17,20 @@ class Toolbar extends Component {
             ></i>
           </button>
 
-          <button className="btn btn-default" disabled="disabled">
+          <button
+            className="btn btn-default"
+            disabled=""
+            onClick={() => this.props.markAsRead()}
+          >
             Mark As Read
           </button>
 
-          <button className="btn btn-default" disabled="disabled">
+          <button
+            className="btn btn-default"
+            disabled=""
+            onClick={() => this.props.markAsUnread()}
+
+          >
             Mark As Unread
           </button>
 
