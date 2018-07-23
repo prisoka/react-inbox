@@ -118,11 +118,34 @@ class App extends Component {
     return action
   }
 
+  selectAllMessagesBtn = () => {
+    let numMessageSelected = this.state.messages.filter((message) => {
+      return message.selected
+    }).length
+
+    if (numMessageSelected === this.state.messages.length) {
+      this.setState({
+        message: this.state.messages.map((message) => {
+          message.selected = false
+          return message
+        })
+      })
+    } else {
+      this.setState({
+        message: this.state.messages.map((message) => {
+          message.selected = true
+          return message
+        })
+      })
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Toolbar
           selectedIndicator={this.selectedIndicator}
+          selectAllMessagesBtn={this.selectAllMessagesBtn}
         />
         <MessageList
           messages={ this.state.messages }

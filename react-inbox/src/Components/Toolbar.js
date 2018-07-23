@@ -13,6 +13,7 @@ class Toolbar extends Component {
           <button className="btn btn-default">
             <i
               className={`fa fa${ this.props.selectedIndicator() }-square-o`}
+              onClick={ () => this.props.selectAllMessagesBtn() }
             ></i>
           </button>
 
