@@ -143,7 +143,7 @@ class App extends Component {
 
   // Toolbar Story: Mark as Read
   markAsRead = () => {
-    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    let selectedMessages = this.state.messages.filter(message => message.selected)
     this.setState(this.state.messages.concat(selectedMessages.map(message => {
       message.read = true
       return message
@@ -152,7 +152,7 @@ class App extends Component {
 
   // Toolbar Story: Mark as Unread
   markAsUnread = () => {
-    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    let selectedMessages = this.state.messages.filter( message => message.selected)
     this.setState(this.state.messages.concat(selectedMessages.map(message => {
       message.read = false
       return message
@@ -166,13 +166,17 @@ class App extends Component {
       return message.selected ? true : false
     })
 
-    return readStatusArr.includes(true) || readStatusArr.length === 0 ? 'disable' : ''
+    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
   }
 
   // Toolbar story: mark as Unread disable BTN
   disabledUnreadBtn = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    return selectedMessages === 0 ? 'disable' : ''
+    let readStatusArr = selectedMessages.map((message) => {
+      return message.selected ? true : false
+    })
+
+    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
   }
 
   // Toolbar : disabled Delete Btn and Add/Remove Label Dropdown

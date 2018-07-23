@@ -10,7 +10,7 @@ class Toolbar extends Component {
         <div className="col-md-12">
           <p className="pull-right">
             <span className="badge badge">{ unreadMessages }</span>
-            unread messages
+            Unread messages
           </p>
 
           <button className="btn btn-default">
@@ -22,7 +22,7 @@ class Toolbar extends Component {
 
           <button
             className="btn btn-default"
-            disabled={`${ this.props.disabledReadBtn() }`}
+            disabled={`${this.props.disabledReadBtn()}`}
             onClick={() => this.props.markAsRead()}
           >
             Mark As Read
@@ -30,7 +30,7 @@ class Toolbar extends Component {
 
           <button
             className="btn btn-default"
-            disabled={`${ this.props.disabledUnreadBtn() }`}
+            disabled={`${this.props.disabledUnreadBtn()}`}
             onClick={() => this.props.markAsUnread()}
 
           >
