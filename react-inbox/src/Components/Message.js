@@ -8,7 +8,7 @@ const Message = ({message}) => {
     )
   })
   return (
-    <div className={`row message ${ message.read ? 'read' : 'unread' }`}>
+    <div className={`row message ${ message.read ? 'read' : 'unread' } ${ message.selected ? 'selected' : '' }`}>
       <div className="col-xs-1">
         <div className="row">
           <div className="col-xs-2">
