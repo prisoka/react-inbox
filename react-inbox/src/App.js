@@ -179,6 +179,24 @@ class App extends Component {
     return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
   }
 
+  // Toolbar story: Deleting Messages
+  disableDeleteMessageBtn = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    let readStatusArr = selectedMessages.map((message) => {
+      return message.selected ? true : false
+    })
+
+    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+  }
+
+  deleteMessage = () => {
+    this.setState({
+      messages: this.state.messages.filter((message) => {
+        return !message.selected
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -190,6 +208,7 @@ class App extends Component {
           markAsUnread={this.markAsUnread}
           disabledReadBtn={this.disabledReadBtn}
           disabledUnreadBtn={this.disabledUnreadBtn}
+          disableDeleteMessageBtn={this.disableDeleteMessageBtn}
         />
         <MessageList
           messages={ this.state.messages }
