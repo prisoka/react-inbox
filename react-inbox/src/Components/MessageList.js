@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Toolbar extends Component {
+class MessageList extends Component {
   render() {
     return (
       <div className="App">
@@ -10,4 +10,4 @@ class Toolbar extends Component {
   }
 }
 
-export default Toolbar;
+export default MessageList;
