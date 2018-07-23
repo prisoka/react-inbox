@@ -11,6 +11,7 @@ class MessageList extends Component {
           message={message}
           userStarredMessage={this.props.userStarredMessage}
           userSelectedMessage={this.props.userSelectedMessage}
+          userReadMessage={this.props.userReadMessage}
         />
       )
     })

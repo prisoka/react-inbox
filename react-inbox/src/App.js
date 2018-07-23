@@ -88,6 +88,15 @@ class App extends Component {
     this.setState(this.state.messages.concat(message))
   }
 
+  /* story: Marking Messages as Read
+  - When a user selects messages And presses "Mark As Read"
+  - Then each selected message should be marked as "read" And should no longer be bold */
+  userReadMessage = (message) => {
+    message.read = true
+    // now, setState:
+    this.setState(this.state.messages.concat(message))
+  }
+
   render() {
     return (
       <div className="App">
@@ -96,6 +105,7 @@ class App extends Component {
           messages={ this.state.messages }
           userStarredMessage={this.userStarredMessage}
           userSelectedMessage={this.userSelectedMessage}
+          userReadMessage={this.userReadMessage}
         />
       </div>
     );

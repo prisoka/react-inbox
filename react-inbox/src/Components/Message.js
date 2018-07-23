@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Message = ({message, userStarredMessage, userSelectedMessage}) => {
+const Message = ({message, userStarredMessage, userSelectedMessage, userReadMessage}) => {
   let labelList = message.labels.map((label, index) => {
     return (
       <span className="label label-warning">{ label }</span>
@@ -26,7 +26,10 @@ const Message = ({message, userStarredMessage, userSelectedMessage}) => {
           </div>
         </div>
       </div>
-      <div className="col-xs-11">
+      <div
+        className="col-xs-11"
+        onClick={() => {userReadMessage(message)}}
+      >
         {labelList}
         <a href="#">
           { message.subject }
