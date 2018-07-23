@@ -79,6 +79,15 @@ class App extends Component {
     this.setState(this.state.messages.concat(message))
   }
 
+  /* story: Selecting Individual Messages >>>
+  - When a user checks the checkbox on a message / Then the message should be highlighted
+  - When a user unchecks the checkbox on a message / Then the message should _not_ be highlighted */
+  userSelectedMessage = (message) => {
+    message.selected = !message.selected
+    // now, setState:
+    this.setState(this.state.messages.concat(message))
+  }
+
   render() {
     return (
       <div className="App">
@@ -86,6 +95,7 @@ class App extends Component {
         <MessageList
           messages={ this.state.messages }
           userStarredMessage={this.userStarredMessage}
+          userSelectedMessage={this.userSelectedMessage}
         />
       </div>
     );

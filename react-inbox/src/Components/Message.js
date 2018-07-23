@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Message = ({message, userStarredMessage}) => {
+const Message = ({message, userStarredMessage, userSelectedMessage}) => {
   let labelList = message.labels.map((label, index) => {
     return (
       <span className="label label-warning">{ label }</span>
@@ -15,6 +15,7 @@ const Message = ({message, userStarredMessage}) => {
             <input
               type="checkbox"
               checked={ message.selected }
+              onChange={() => {userSelectedMessage(message)}}
             />
           </div>
           <div className="col-xs-2">
