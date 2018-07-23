@@ -253,13 +253,28 @@ class App extends Component {
     return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
   }
 
-  // Toolbar story: Deleting Messages
-  deleteMessage = () => {
-    this.setState({
-      messages: this.state.messages.filter((message) => {
-        return !message.selected
-      })
+  // Toolbar story: Deleting Message
+  deleteMessage = async () => {
+    console.log('HELLO')
+    const messages = this.state.messages.filter(message => !message.selected);
+    console.log('messages', messages)
+    // filter selected messages
+    const selectedMessages = this.state.messages.filter(message => message.selected)
+    console.log('selectedMessages', selectedMessages)
+    // PATCH request on deleting messages
+    await fetch("http://localhost:8082/api/messages", {
+      method: "PATCH",
+      body: JSON.stringify({
+        messageIds: [...selectedMessages.map(message => message.id)],
+        command: "delete"
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
     })
+
+    this.setState({ messages })
   }
 
   // Toolbar: Add label(s)
@@ -302,6 +317,7 @@ class App extends Component {
           disabledRemoveLabelDropDown={this.disabledRemoveLabelDropDown}
           addLabel={this.addLabel}
           removeLabel={this.removeLabel}
+          deleteMessages={this.deleteMessages}
         />
         <ComposeMessage
           display={this.state.display}

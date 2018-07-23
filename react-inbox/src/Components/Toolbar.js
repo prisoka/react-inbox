@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Toolbar extends Component {
 
   render() {
-    const {toggleCompose} = this.props
+    const {toggleCompose, deleteMessage} = this.props
     let unreadMessages = this.props.messages.filter((message) => !message.read).length
 
     return (
@@ -71,6 +71,7 @@ class Toolbar extends Component {
           <button
             className="btn btn-default"
             disabled={`${ this.props.disabledDeleteMessageBtn() }`}
+            onClick={deleteMessage}
           >
             <i className="fa fa-trash-o"></i>
           </button>
