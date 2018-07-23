@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const Message = ({message}) => {
   return (
-    <div className={`row message ${message.read ? 'read' : 'unread'}`}>
+    <div className={`row message ${ message.read ? 'read' : 'unread' }`}>
       <div className="col-xs-1">
         <div className="row">
           <div className="col-xs-2">
@@ -12,7 +12,7 @@ const Message = ({message}) => {
             />
           </div>
           <div className="col-xs-2">
-            <i className="star fa fa-star"></i>
+            <i className={`star fa fa-star${ message.starred ? '' : '-o' }`}></i>
           </div>
         </div>
       </div>
