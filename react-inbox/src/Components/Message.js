@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Message = ({message}) => {
+const Message = ({message, userStarredMessage}) => {
   let labelList = message.labels.map((label, index) => {
     return (
       <span className="label label-warning">{ label }</span>
@@ -18,14 +18,17 @@ const Message = ({message}) => {
             />
           </div>
           <div className="col-xs-2">
-            <i className={`star fa fa-star${ message.starred ? '' : '-o' }`}></i>
+            <i
+              className={`star fa fa-star${ message.starred ? '' : '-o' }`}
+              onClick={() => {userStarredMessage(message)}}
+            ></i>
           </div>
         </div>
       </div>
       <div className="col-xs-11">
         {labelList}
         <a href="#">
-          { message.subject }        
+          { message.subject }
         </a>
       </div>
     </div>

@@ -68,12 +68,24 @@ class App extends Component {
     ]
   }
 
+  /* story: Starring >>>
+  - When a user clicks the star next to a message
+  - Then it should toggle whether the message is starred or not */
+
+  userStarredMessage = (message) => {
+    // console.log('function userStarredMessage', message)
+    message.starred = !message.starred
+    // now, setState:
+    this.setState(this.state.messages.concat(message))
+  }
+
   render() {
     return (
       <div className="App">
         <Toolbar />
         <MessageList
           messages={ this.state.messages }
+          userStarredMessage={this.userStarredMessage}
         />
       </div>
     );
