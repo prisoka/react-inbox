@@ -159,6 +159,26 @@ class App extends Component {
     })))
   }
 
+  // Toolbar story: mark as Read disable BTN
+  disabledReadBtn = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    let readStatusArr = selectedMessages.map((message) => {
+      return message.read ? true : false
+    })
+
+    return readStatusArr.includes(true) || readStatusArr.length === 0 ? 'disable' : ''
+  }
+
+  // Toolbar story: mark as Unread disable BTN
+  disabledUnreadBtn = () => {
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+    let readStatusArr = selectedMessages.map((message) => {
+      return message.read ? true : false
+    })
+
+    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+  }
+
   render() {
     return (
       <div className="App">
@@ -167,6 +187,8 @@ class App extends Component {
           selectAllMessagesBtn={this.selectAllMessagesBtn}
           markAsRead={this.markAsRead}
           markAsUnread={this.markAsUnread}
+          disabledReadBtn={this.disabledReadBtn}
+          disabledUnreadBtn={this.disabledUnreadBtn}
         />
         <MessageList
           messages={ this.state.messages }

@@ -19,7 +19,7 @@ class Toolbar extends Component {
 
           <button
             className="btn btn-default"
-            disabled=""
+            disabled={`${ this.props.disabledReadBtn() }`}
             onClick={() => this.props.markAsRead()}
           >
             Mark As Read
@@ -27,7 +27,7 @@ class Toolbar extends Component {
 
           <button
             className="btn btn-default"
-            disabled=""
+            disabled={`${ this.props.disabledUnreadBtn() }`}
             onClick={() => this.props.markAsUnread()}
 
           >
