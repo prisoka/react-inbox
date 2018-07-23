@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 const Message = ({message}) => {
+  let labelList = message.labels.map((label, index) => {
+    return (
+      <span className="label label-warning">{ label }</span>
+
+    )
+  })
   return (
     <div className={`row message ${ message.read ? 'read' : 'unread' }`}>
       <div className="col-xs-1">
@@ -17,8 +23,7 @@ const Message = ({message}) => {
         </div>
       </div>
       <div className="col-xs-11">
-        <span className="label label-warning">dev</span>
-        <span className="label label-warning">gschool</span>
+        {labelList}
         <a href="#">
           Here is some message text that has a bunch of stuff
         </a>
