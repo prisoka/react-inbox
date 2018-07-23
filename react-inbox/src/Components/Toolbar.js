@@ -13,7 +13,9 @@ class Toolbar extends Component {
             Unread messages
           </p>
 
-          <a className="btn btn-danger">
+          <a
+            className="btn btn-danger"
+          >
             <i className="fa fa-plus"></i>
           </a>
 

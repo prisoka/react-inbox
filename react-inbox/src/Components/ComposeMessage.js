@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 
 class ComposeMessage extends Component {
   render() {
+    const { display, addMessage } = this.props
+
+    const sendMessage = (e) => {
+      e.preventDefault()
+      const subject = document.querySelector("#subject")
+      const body = document.querySelector("#body")
+
+      addMessage({ subject: subject.value, body: body.value })
+
+      subject.value = ""
+      body.value = ""
+    }
+
     return (
       <form class="form-horizontal well">
         <div class="form-group">
@@ -24,9 +37,13 @@ class ComposeMessage extends Component {
           </div>
         </div>
 
-        <div class="form-group">
-          <div class="col-sm-8 col-sm-offset-2">
-            <input type="submit" value="Send" class="btn btn-primary" />
+        <div className="form-group">
+          <div className="col-sm-8 col-sm-offset-2">
+            <input
+              type="submit"
+              value="Send"
+              className="btn btn-primary"
+              onClick={sendMessage}/>
           </div>
         </div>
       </form>

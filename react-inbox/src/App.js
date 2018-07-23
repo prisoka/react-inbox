@@ -89,6 +89,7 @@ class App extends Component {
   addMessage = async (composeMessage) => {
     const { subject, body } = composeMessage
 
+    // fetch POST method to save new message to the server
     const response = await fetch("http://localhost:8082/api/messages", {
       method: "POST",
       body: JSON.stringify({
