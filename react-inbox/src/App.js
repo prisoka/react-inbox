@@ -3,6 +3,7 @@ import './App.css';
 
 import Toolbar from './Components/Toolbar'
 import MessageList from './Components/MessageList'
+import ComposeMessage from './Components/ComposeMessage'
 
 class App extends Component {
   state = {
@@ -76,13 +77,41 @@ class App extends Component {
 
   // loading messages from the server
   getDataFromAPI = async () => {
-  // fetch messagesJson
-  const messagesJson = await fetch('http://localhost:8082/api/messages')
-  let messages = await messagesJson.json()
-  // console.log('messages', messages)
+    // fetch messagesJson
+    const messagesJson = await fetch('http://localhost:8082/api/messages')
+    let messages = await messagesJson.json()
+    // console.log('messages', messages)
 
-  this.setState({messages})
-}
+    this.setState({messages})
+  }
+
+  // Toolbar Compose Message
+  addMessage = async (composeMessage) => {
+    const { subject, body } = composeMessage
+
+    const response = await fetch("http://localhost:8082/api/messages", {
+      method: "POST",
+      body: JSON.stringify({
+        subject,
+        body
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+
+    const message = await response.json()
+
+    this.setState({
+      messages: [
+        ...this.state.messages,
+        message
+      ],
+      display: !this.state.display
+    })
+    console.log(this.state);
+  }
 
   /* Message story: Starring >>>
   - When a user clicks the star next to a message
@@ -267,6 +296,10 @@ class App extends Component {
           disabledRemoveLabelDropDown={this.disabledRemoveLabelDropDown}
           addLabel={this.addLabel}
           removeLabel={this.removeLabel}
+        />
+        <ComposeMessage
+          display={this.state.display}
+          addMessage={this.addMessage}
         />
         <MessageList
           messages={ this.state.messages }
