@@ -6,7 +6,10 @@ const Message = ({message}) => {
       <div className="col-xs-1">
         <div className="row">
           <div className="col-xs-2">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={ message.selected }
+            />
           </div>
           <div className="col-xs-2">
             <i className="star fa fa-star"></i>
