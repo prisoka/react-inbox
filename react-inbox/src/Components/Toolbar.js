@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Toolbar extends Component {
 
   render() {
+    const {toggleCompose} = this.props
     let unreadMessages = this.props.messages.filter((message) => !message.read).length
 
     return (
@@ -15,6 +16,7 @@ class Toolbar extends Component {
 
           <a
             className="btn btn-danger"
+            onClick={toggleCompose}
           >
             <i className="fa fa-plus"></i>
           </a>

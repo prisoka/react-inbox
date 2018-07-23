@@ -85,6 +85,10 @@ class App extends Component {
     this.setState({messages})
   }
 
+  toggleCompose = () => {
+    this.setState({ display: !this.state.display })
+  }
+
   // Toolbar Compose Message
   addMessage = async (composeMessage) => {
     const { subject, body } = composeMessage
@@ -286,6 +290,7 @@ class App extends Component {
       <div className="App">
         <Toolbar
           messages={this.state.messages}
+          toggleCompose={this.toggleCompose}
           selectedIndicator={this.selectedIndicator}
           selectAllMessagesBtn={this.selectAllMessagesBtn}
           markAsRead={this.markAsRead}
