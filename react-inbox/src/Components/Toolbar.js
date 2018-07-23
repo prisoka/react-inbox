@@ -40,6 +40,7 @@ class Toolbar extends Component {
           <select
             className="form-control label-select"
             disabled={`${ this.props.disabledAddLabelDropDown() }`}
+            onChange={ () => this.props.addLabel(document.querySelectorAll('select')[0].value) }
           >
             <option>Apply label</option>
             <option value="dev">dev</option>
@@ -50,6 +51,8 @@ class Toolbar extends Component {
           <select
             className="form-control label-select"
             disabled={`${ this.props.disabledRemoveLabelDropDown() }`}
+            onChange={ () => this.props.removeLabel(document.querySelectorAll('select')[1].value) }
+
           >
             <option>Remove label</option>
             <option value="dev">dev</option>

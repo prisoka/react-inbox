@@ -208,6 +208,29 @@ class App extends Component {
     })
   }
 
+  // Toolbar: Add label(s)
+  addLabel = (label) => {
+    if(label === 'Apply label') return
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+
+    this.setState(this.state.messages.concat(selectedMessages.map((message) => {
+      if(message.labels.includes(label)) return message
+      message.labels.push(label)
+      return message
+    })))
+  }
+
+  // Toolbar: Remove label(s)
+  removeLabel = (label) => {
+    if(label === 'Remove label') return
+    let selectedMessages = this.state.messages.filter((message) => message.selected)
+
+    this.setState(this.state.messages.concat(selectedMessages.map((message) => {
+      message.labels.splice(label, 1)
+      return message
+    })))
+  }
+
   render() {
     return (
       <div className="App">
@@ -222,6 +245,8 @@ class App extends Component {
           disabledDeleteMessageBtn={this.disabledDeleteMessageBtn}
           disabledAddLabelDropDown={this.disabledAddLabelDropDown}
           disabledRemoveLabelDropDown={this.disabledRemoveLabelDropDown}
+          addLabel={this.addLabel}
+          removeLabel={this.removeLabel}
         />
         <MessageList
           messages={ this.state.messages }
