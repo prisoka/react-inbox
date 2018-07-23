@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
 class Toolbar extends Component {
+
   render() {
+    let unreadMessages = this.props.messages.filter((message) => !message.read).length
+
     return (
       <div className="row toolbar">
         <div className="col-md-12">
           <p className="pull-right">
-            <span className="badge badge">2</span>
+            <span className="badge badge">{ unreadMessages }</span>
             unread messages
           </p>
 

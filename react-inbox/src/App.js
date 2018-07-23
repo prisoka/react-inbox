@@ -183,6 +183,7 @@ class App extends Component {
     return (
       <div className="App">
         <Toolbar
+          messages={this.state.messages}
           selectedIndicator={this.selectedIndicator}
           selectAllMessagesBtn={this.selectAllMessagesBtn}
           markAsRead={this.markAsRead}
