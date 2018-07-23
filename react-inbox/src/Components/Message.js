@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const Message = ({message, userStarredMessage, userSelectedMessage, userReadMessage}) => {
   let labelList = message.labels.map((label, index) => {
     return (
-      <span className="label label-warning">{ label }</span>
+      <span key={index} className="label label-warning">{ label }</span>
 
     )
   })
