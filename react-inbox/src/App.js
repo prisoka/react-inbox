@@ -212,45 +212,29 @@ class App extends Component {
   // Toolbar story: mark as Read disable BTN
   disabledReadBtn = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    let readStatusArr = selectedMessages.map((message) => {
-      return message.selected ? true : false
-    })
-
-    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+    return selectedMessages.length === 0 ? 'disable' : ''
   }
 
   // Toolbar story: mark as Unread disable BTN
   disabledUnreadBtn = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    let readStatusArr = selectedMessages.map((message) => {
-      return message.selected ? true : false
-    })
-
-    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+    return selectedMessages.length === 0 ? 'disable' : ''
   }
 
   // Toolbar : disabled Delete Btn and Add/Remove Label Dropdown
   disabledDeleteMessageBtn = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    return selectedMessages === 0 ? 'disable' : ''
+    return selectedMessages.length === 0 ? 'disable' : ''
   }
 
   disabledAddLabelDropDown = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    let readStatusArr = selectedMessages.map((message) => {
-      return message.selected ? true : false
-    })
-
-    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+    return selectedMessages.length === 0 ? 'disable' : ''
   }
 
   disabledRemoveLabelDropDown = () => {
     let selectedMessages = this.state.messages.filter((message) => message.selected)
-    let readStatusArr = selectedMessages.map((message) => {
-      return message.selected ? true : false
-    })
-
-    return readStatusArr.includes(false) || readStatusArr.length === 0 ? 'disable' : ''
+    return selectedMessages.length === 0 ? 'disable' : ''
   }
 
   // Toolbar story: Deleting Message
